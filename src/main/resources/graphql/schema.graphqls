@@ -1,0 +1,76 @@
+# using https://github.com/graphql-java/graphql-java-extended-scalars
+scalar BigDecimal
+scalar Date @specifiedBy(url: "https://tools.ietf.org/html/rfc3339")
+
+type User {
+    id: ID!
+    username: String!
+    email: String!
+}
+
+type Category {
+    id: ID!
+    categoryName: String!
+    categoryDescription: String
+}
+
+type Currency {
+    id: ID!
+    currencyCode: String!
+    currencyName: String!
+    currencySymbol: String!
+}
+
+type Expense {
+    id: ID!
+    expenseAmount: BigDecimal!
+    expenseDescription: String
+    date: Date!
+    user: User!
+    category: Category!
+    currency: Currency!
+}
+
+type ExpenseConnection {
+    edges: [ExpenseEdge]!
+    pageInfo: PageInfo!
+}
+
+type ExpenseEdge {
+    node: Expense!
+    cursor: String!
+}
+
+type PageInfo {
+    hasPreviousPage: Boolean!
+    hasNextPage: Boolean!
+    startCursor: String
+    endCursor: String
+}
+
+# Query
+type Query {
+    # Get all expenses
+    getAllExpenses(first: Int, after: String): ExpenseConnection!
+
+    # Get all expenses by user ID, category ID, and currency ID
+    getAllExpensesByFilters(userId: ID, categoryName: String, currencyCode: String, first: Int, after: String): ExpenseConnection!
+
+    # Get all categories
+    getAllCategories: [Category!]!
+
+    # Get all currencies
+    getAllCurrencies: [Currency!]!
+}
+
+# Mutations
+type Mutation {
+    # Add a new expense
+    addExpense(amount: BigDecimal!, description: String, date: Date!, userId: ID!, categoryId: ID!, currencyId: ID!): Expense!
+
+    # Update an existing expense
+    updateExpense(expenseId: ID!, amount: BigDecimal!, description: String, date: Date!, categoryId: ID, currencyId: ID): Expense!
+
+    # Delete an expense
+    deleteExpense(expenseId: ID!): Boolean!
+}
