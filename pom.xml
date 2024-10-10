@@ -21,10 +21,10 @@
 		<developer/>
 	</developers>
 	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
+		<connection>scm:git:https://github.com/willake/fizzy-budget-backend-expense-service.git</connection>
+		<developerConnection>scm:git:https://github.com/willake/fizzy-budget-backend-expense-service.git</developerConnection>
+		<url>https://github.com/willake/fizzy-budget-backend-expense-service</url>
+		<tag>HEAD</tag>
 	</scm>
 	<properties>
 		<java.version>22</java.version>
@@ -93,7 +93,7 @@
 		<dependency>
 			<groupId>com.huiun.fizzybudget</groupId>
 			<artifactId>common</artifactId>
-			<version>0.0.12</version>
+			<version>0.1.2</version>
 		</dependency>
 		<!-- GraphQL -->
 		<dependency>
@@ -127,5 +127,12 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<repositories>
+		<repository>
+			<id>github</id>
+			<url>https://maven.pkg.github.com/willake/fizzy-budget-common</url>
+		</repository>
+	</repositories>
 
 </project>

@@ -101,7 +101,7 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build -t willake/user-service:${{ github.sha }} .
+        docker build -t willake/expense-service:${{ github.sha }} .
 
     - name: Log in to Docker Hub
       env:
@@ -109,4 +109,4 @@ jobs:
       run: echo "${{ secrets.DOCKER_TOKEN }}" | docker login -u willake --password-stdin
 
     - name: Push Docker image
-      run: docker push willake/user-service:${{ github.sha }}
+      run: docker push willake/expense-service:${{ github.sha }}
