@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.huiun.fizzybudget</groupId>
-	<artifactId>expenseservice</artifactId>
+	<artifactId>expense-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>expense-service</name>
 	<description>Expense Service for FizzBudget</description>
